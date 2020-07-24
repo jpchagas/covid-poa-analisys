@@ -8,7 +8,11 @@ install:
 #script:
 #  - pytest
 
+before_deploy: "echo 'Iniciando deploy para o heroku'..."
+
 deploy:
     provider: heroku
     api_key: $HEROKU_TOKEN
     app: covid-poa-analysis
+
+after_deploy: "echo 'Deploy finalizado!'"
