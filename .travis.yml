@@ -1,20 +1,13 @@
+dist: bionic
 language: python
-python:
-  - "3.6"      # current default Python on Travis CI
+sudo: required
+python: "3.6"
 
-#cache: pip
-# command to install dependencies
-#install:
-#  - pip install -r requirements.txt
-# command to run tests
-#script:
-#  - pytest
+install: pip install -r requirements.txt
 
-before_deploy: "echo 'Iniciando deploy para o heroku'..."
+script: python test.py
 
 deploy:
     provider: heroku
     api_key: $HEROKU_TOKEN
     app: covid-poa-analysis
-
-after_deploy: "echo 'Deploy finalizado!'"
