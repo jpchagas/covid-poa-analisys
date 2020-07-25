@@ -4,6 +4,17 @@ python:
 
 cache: pip
 # command to install dependencies
-install:
-  - pip install -r requirements.txt
+#install:
+#  - pip install -r requirements.txt
 # command to run tests
+#script:
+#  - pytest
+
+before_deploy: "echo 'Iniciando deploy para o heroku'..."
+
+deploy:
+    provider: heroku
+    api_key: $HEROKU_TOKEN
+    app: covid-poa-analysis
+
+after_deploy: "echo 'Deploy finalizado!'"
